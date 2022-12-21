@@ -1,7 +1,7 @@
 from Rendimentos import Rendimento
 from Deducoes import Deducoes
 rendimento = Rendimento()
-deducao = Deducoes('',0)
+deducao = Deducoes()
 
 def main():
     print("============= Calculadora IRPF =============")

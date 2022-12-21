@@ -50,7 +50,7 @@ def testCalculaRendimento():
 @pytest.mark.parametrize(['descricao', 'valor'], deducao)
 def testDeducaoClass(descricao, valor):
     deducao = Deducoes(descricao, valor)
-    assert deducao.valor == valor
+    assert deducao.valorDeducao == valor
 
 def testDeducaoDescricaoInvalida():
     deducao = Deducoes('Previdencia', 362.4)
@@ -59,27 +59,12 @@ def testDeducaoDescricaoInvalida():
 def testCalculoDeducao():
     deducao = Deducoes('Previdencia', 362.4)
     assert deducao.CalculaDeducoes([362.4]) == 362.4
-
-def testCalculoDeducaoInt():
-    deducao = Deducoes('Previdencia', 362.4)
-    listaTeste = [300,300,150,150,100]
-    assert deducao.CalculaDeducoes(listaTeste) == 1000
-
-def testCalculoDeducaoFloat():
-    deducao = Deducoes('Previdencia', 362.4)
-    listaTeste = [25.5,25.25]
-    assert deducao.CalculaDeducoes(listaTeste) == 50.75
-
-def testCalculoDeducaoFloat():
-    deducao = Deducoes('Previdencia', 1)
-    listaTeste = [100,120.5,10.3,2.2]
-    assert deducao.CalculaDeducoes(listaTeste) == 233.0
-
-# # EXCEÇOES
-# @pytest.mark.TesteExcecao
-# def testDescricaoEmBrancoOutrasDeducoes():
-#         with pytest.raises(DescricaoEmBrancoException):
-#             deducao = Deducoes('', 0)
+    
+@pytest.mark.TesteExcecao
+def testDescricaoEmBrancoOutrasDeducoes():
+        deducao = Deducoes()
+        with pytest.raises(DescricaoEmBrancoException):
+            deducao.setDeducao("")
 
 
 
