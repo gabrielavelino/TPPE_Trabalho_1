@@ -1,17 +1,17 @@
 from Exceptions_test import ValorDeducaoInvalidoException, NomeEmBrancoException
 
 class Deducoes:
-    def __init__(self,deducao =  '',valor = 0):
+    def __init__(self,deducao,valor):
         self.deducao = deducao
-        self.valorDeducao = valor
-        pass
-    
+        self.valor = valor
+
     def getValorDeducao(self):
-        return self.valorDeducao
+        return self.valor
     def  setValorDeducao(self,valor):
         if valor == 0:
             raise ValorDeducaoInvalidoException("Valor da dedução inválido! Digite um valor válido!")
-        self.valorDeducao = valor
+        self.valor = valor
+    
     def  getDeducao(self):
         return self.deducao
     def  setDeducao(self,deducao):
