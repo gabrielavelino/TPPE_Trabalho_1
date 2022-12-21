@@ -26,7 +26,31 @@ def main():
         quantidadeDeducoes = quantidadeDeducoes - 1
     print('Valor total deducao: ', deducao.CalculaDeducoes(listDeducao))
     total = rendimento.getValor() - deducao.CalculaDeducoes(listDeducao)
-    print('Valor total rendimento: ',total) 
+    print('Valor total rendimento: ',total)
+
+    quantidadePrevidenciaria = int(input("Digite a quantidade previdenciária ofical que você deseja: "))
+    while quantidadePrevidenciaria > 0:
+        descriçaoPrevidenciaria = str(input("Digite a descrição da sua previdenciária ofical: "))
+        valorPrevidenciaria = float(input("Digite o valor da sua previdenciária ofical: "))
+        quantidadePrevidenciaria = quantidadePrevidenciaria - 1
+    
+    quantidadePensao = int(input("Digite a quantidade de pensões alimentícias que você deseja: "))
+    while quantidadePensao > 0:
+        descriçaoPensao = str(input("Digite a descrição da sua previdenciária ofical: "))
+        valorPensao = float(input("Digite o valor da sua previdenciária ofical: "))
+        quantidadePensao = quantidadePensao - 1
+    
+    quantidadeDependentes = int(input("Digite a quantidade de pensões alimentícias que você deseja: "))
+    while quantidadeDependentes > 0:
+        descriçaoDependentes = str(input("Digite a descrição da sua pensões alimentícias: "))
+        valorDependentes = float(input("Digite o valor da sua pensões alimentícias: "))
+        quantidadeDependentes = quantidadeDependentes - 1
+
+    
+
+    print('Valor total deducao: ', deducao.CalculaDeducoes(listDeducao))
+    total = rendimento.getValor() - deducao.CalculaDeducoes(listDeducao)
+    print('Valor total rendimento: ',total)
         
 
 if __name__ == "__main__":

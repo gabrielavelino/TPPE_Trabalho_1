@@ -19,9 +19,8 @@ rendimentoInvalido = [
 ]
 
 deducao = [
-    ('Previdencia', 362.4),
-    ('dependentes', 600),
-    (None, None),
+    (500),
+    (600),
 ]
 
 @pytest.mark.parametrize(['descricao', 'valor'], rendimento)
@@ -47,24 +46,18 @@ def testCalculaRendimento():
 
 # DEDUÇOES
 
-@pytest.mark.parametrize(['descricao', 'valor'], deducao)
-def testDeducaoClass(descricao, valor):
-    deducao = Deducoes(descricao, valor)
-    assert deducao.valorDeducao == valor
 
-def testDeducaoDescricaoInvalida():
-    deducao = Deducoes('Previdencia', 362.4)
-    assert deducao.deducao == 'Previdencia'
+def testDeducaoClass():
+    deducao = Deducoes()
+    valor = 300
+    assert deducao.CalculaDeducoes() == valor
 
-def testCalculoDeducao():
-    deducao = Deducoes('Previdencia', 362.4)
-    assert deducao.CalculaDeducoes([362.4]) == 362.4
     
-@pytest.mark.TesteExcecao
-def testDescricaoEmBrancoOutrasDeducoes():
-        deducao = Deducoes()
-        with pytest.raises(DescricaoEmBrancoException):
-            deducao.setDeducao("")
+# @pytest.mark.TesteExcecao
+# def testDescricaoEmBrancoOutrasDeducoes():
+#         deducao = Deducoes()
+#         with pytest.raises(DescricaoEmBrancoException):
+#             deducao.setDeducao("")
 
 
 

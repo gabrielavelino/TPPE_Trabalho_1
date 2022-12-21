@@ -9,7 +9,7 @@ class Rendimento:
     def getValor(self):
         return self.valor
     def setValor(self,valor):
-        if valor == 0 or valor == None:
+        if valor == 0 or valor == None or valor < 0:
             raise ValorRendimentoInvalidoException("Valor do rendimento inválido! Digite um valor válido!")
         self.valor = valor
     
