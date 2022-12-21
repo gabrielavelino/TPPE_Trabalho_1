@@ -43,14 +43,30 @@ def testRendimentoDescricaoInvalida(descricao, valor):
 
 @pytest.mark.TesteFuncional
 def testCalculaRendimentoFalsicacao():
-    rendimento = Rendimento('rendimento', 2)
+    rendimento = Rendimento('Aluguel', 2)
     assert rendimento.CalculaRendimento() == 2
 
 @pytest.mark.TesteFuncional
 def testCalculaRendimentoDuplicacao():
     valor = 1500
-    rendimento = Rendimento('rendimento', valor)
+    rendimento = Rendimento('Aluguel', valor)
     assert rendimento.CalculaRendimento() == valor
+
+@pytest.mark.TesteFuncional
+def testCalculaRendimentoTriangulacao():
+
+    valor1 = 1500.3
+    valor2 = 1325.2
+    valor3 = 12.1
+    rendimento1 = Rendimento('Aluguel', valor1)
+    rendimento2 = Rendimento('Salario', valor2)
+    rendimento3 = Rendimento('Agiota', valor3)
+
+    a1 = rendimento1.CalculaRendimento()
+    a2 = rendimento2.CalculaRendimento()
+    a3 = rendimento3.CalculaRendimento()
+
+    assert a1+a2+a3 == valor1+valor2+valor3
 
 # DEDUÇOES
 
