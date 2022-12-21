@@ -3,6 +3,7 @@
 import pytest
 from Rendimentos import Rendimento
 from Deducoes import Deducoes
+from Aliquota import Aliquota
 from Exceptions_test import ValorRendimentoInvalidoException, DescricaoEmBrancoException, ValorDeducaoInvalidoException, NomeEmBrancoException
 
 rendimento = [
@@ -131,6 +132,11 @@ def testCadastroTotalParametrizado(descricaoAli1,descricaoAli2,descricaoDedu,nom
     
     assert deducao.CalculaDeducoes() == valorTest
 
+# Aliquota
+
+def testAliquota():
+    aliquota = Aliquota(1000, 2000)
+    assert aliquota.calcular_aliquota() == 2
     
 # @pytest.mark.TesteExcecao
 # def testDescricaoEmBrancoOutrasDeducoes():
