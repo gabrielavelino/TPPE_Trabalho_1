@@ -12,6 +12,12 @@ rendimento = [
     ('Teste', 34123),
 ]
 
+rendimentoTestes = [
+    ('Aluguel', 1500.3),
+    ('Salario', 1325.2),
+    ('Agiota', 12.1),
+]
+
 rendimentoDescricao = [
     ('rendimento',1),
 ]
@@ -40,6 +46,24 @@ def testRendimentoDescricaoInvalida(descricao, valor):
     rendimento = Rendimento(descricao, valor)
     rendimento.setDescricao('Nao pode ser nulo')
     assert not rendimento.getDescricao() == descricao
+
+@pytest.mark.parametrize(['descricao,valor'], rendimento)
+def testCalculaRendimentoTriangulacao(descricao, valor):
+
+    rendimento = Rendimento(descricao, valor)
+    assert rendimento.CalculaRendimento() == valor
+
+@pytest.mark.parametrize(['descricao,valor'], rendimentoTestes)
+def testCalculaRendimentoTriangulacao(descricao, valor):
+
+    rendimento = Rendimento(descricao, valor)
+    assert rendimento.CalculaRendimento() == valor
+
+@pytest.mark.parametrize(['descricao,valor'], rendimentoTestes)
+def testCalculaRendimentoDuplicacao(descricao, valor):
+
+    rendimento = Rendimento(descricao, valor)
+    assert rendimento.CalculaRendimento() == valor
 
 @pytest.mark.TesteFuncional
 def testCalculaRendimentoFalsicacao():
