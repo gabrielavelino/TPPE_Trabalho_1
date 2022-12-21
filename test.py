@@ -1,6 +1,7 @@
 import pytest
 from Rendimentos import Rendimento
 from Deducoes import Deducoes
+from Exceptions_test import ValorRendimentoInvalidoException, DescricaoEmBrancoException, ValorDeducaoInvalidoException, NomeEmBrancoException
 
 rendimento = [
     ('rendimento', 1),
@@ -54,5 +55,16 @@ def testDeducaoClass(descricao, valor):
 def testDeducaoDescricaoInvalida():
     deducao = Deducoes('Previdencia', 362.4)
     assert deducao.deducao == 'Previdencia'
+
+def testCalculoDeducao():
+    deducao = Deducoes('Previdencia', 362.4)
+    assert deducao.CalculaDeducoes([362.4]) == 362.4
+    
+@pytest.mark.TesteExcecao
+def testDescricaoEmBrancoOutrasDeducoes():
+        deducao = Deducoes()
+        with pytest.raises(DescricaoEmBrancoException):
+            deducao.setDeducao("")
+
 
 

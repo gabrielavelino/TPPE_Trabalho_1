@@ -19,6 +19,6 @@ class Deducoes:
             raise NomeEmBrancoException("Descrição da dedução em branco! Digite uma descrição válida!")
         self.deducao = deducao
 
-    def CalculaDeducoes(self, valorDeducao):
-        return valorDeducao + self.valorDeducao
+    def CalculaDeducoes(self,listDeducao):
+        return sum(listDeducao)
         

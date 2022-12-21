@@ -9,13 +9,15 @@ class Rendimento:
     def getValor(self):
         return self.valor
     def setValor(self,valor):
-        if valor == 0:
+        if valor == 0 or valor == None:
             raise ValorRendimentoInvalidoException("Valor do rendimento inválido! Digite um valor válido!")
         self.valor = valor
+    
     def getDescricao(self):
         return self.descricao
+
     def setDescricao(self,descricao):
-        if descricao == '':
+        if descricao == '' or descricao == None:
             raise DescricaoEmBrancoException("Descrição do rendimento em branco! Digite uma descrição válida!")
         self.descricao = descricao
     
