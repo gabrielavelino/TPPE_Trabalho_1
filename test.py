@@ -42,9 +42,15 @@ def testRendimentoDescricaoInvalida(descricao, valor):
     assert not rendimento.getDescricao() == descricao
 
 @pytest.mark.TesteFuncional
-def testCalculaRendimento():
-    rendimento = Rendimento('rendimento', 1)
+def testCalculaRendimentoFalsicacao():
+    rendimento = Rendimento('rendimento', 2)
     assert rendimento.CalculaRendimento() == 2
+
+@pytest.mark.TesteFuncional
+def testCalculaRendimentoDuplicacao():
+    valor = 1500
+    rendimento = Rendimento('rendimento', valor)
+    assert rendimento.CalculaRendimento() == valor
 
 # DEDUÇOES
 

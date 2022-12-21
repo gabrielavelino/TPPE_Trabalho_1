@@ -24,4 +24,4 @@ class Rendimento:
         self.descricao = descricao
     
     def CalculaRendimento(self):
-        return 2
+        return self.valor
