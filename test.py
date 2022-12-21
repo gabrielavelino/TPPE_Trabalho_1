@@ -19,8 +19,8 @@ rendimentoInvalido = [
 ]
 
 deducao = [
-    (500),
-    (600),
+    ('filho','Filha','Teste','Boni',250,250,500,'30/08/2000',1189.55),
+    ('Tia','Amiga','Previdencia','Avelox',250,250,400,'30/08/1990',1089.55)
 ]
 
 @pytest.mark.parametrize(['descricao', 'valor'], rendimento)
@@ -72,6 +72,16 @@ def testCadastroTotalDeducoes():
     valor = 989.55
 
     assert deducao.CalculaDeducoes() == valor
+
+@pytest.mark.parametrize("descricaoAli1,descricaoAli2,descricaoDedu,nome,valor1,valo2,valor3,dataNasci,valorTest", deducao)
+def testCadastroTotalParametrizado(descricaoAli1,descricaoAli2,descricaoDedu,nome,valor1,valo2,valor3,dataNasci,valorTest):
+    deducao = Deducoes()
+    deducao.cadastrarPensaoAlimenticia(descricaoAli1,valor1)
+    deducao.cadastrarPensaoAlimenticia(descricaoAli2,valo2)
+    deducao.cadastrarDeducao(descricaoDedu,valor3)
+    deducao.cadastrarDependentes(nome,dataNasci) # 1 dependente = 189,55
+    
+    assert deducao.CalculaDeducoes() == valorTest
 
     
 # @pytest.mark.TesteExcecao
