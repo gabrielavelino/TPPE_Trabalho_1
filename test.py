@@ -49,7 +49,10 @@ def testCalculaRendimento():
 
 def testDeducaoClass():
     deducao = Deducoes()
-    valor = 300
+    deducao.cadastrarPrevidenciaOficial('Teste',500)
+    deducao.cadastrarDeducao('Test2',500)
+    valor = 1000
+
     assert deducao.CalculaDeducoes() == valor
 
     

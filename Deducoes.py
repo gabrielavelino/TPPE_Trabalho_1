@@ -61,7 +61,7 @@ class Deducoes:
         return self.dependentes
 
     def CalculaDeducoes(self):
-        return 300
+        return self.totalValorDeducao
 
     # def getValorDeducao(self):
     #     return self.valorDeducao
