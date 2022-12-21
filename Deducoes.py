@@ -59,9 +59,14 @@ class Deducoes:
     
     def getDependentes(self):
         return self.dependentes
+    
+    def getDependentes(self):
+        NumDependentes = len(self.dependentes)
+        return NumDependentes
 
     def CalculaDeducoes(self):
-        return self.totalValorDeducao
+        self.totalValorDeducao  = self.totalValorDeducao +(189.55 * len(self.dependentes))
+        return self.totalValorDeducao 
 
     # def getValorDeducao(self):
     #     return self.valorDeducao

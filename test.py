@@ -55,6 +55,24 @@ def testDeducaoClass():
 
     assert deducao.CalculaDeducoes() == valor
 
+def testDeducaoDependentes():
+    deducao = Deducoes()
+    deducao.cadastrarPrevidenciaOficial('Teste',500)
+    deducao.cadastrarDeducao('Test2',500)
+    valor = 1000
+
+    assert deducao.CalculaDeducoes() == valor
+
+def testCadastroTotalDeducoes():
+    deducao = Deducoes()
+    deducao.cadastrarPensaoAlimenticia('Filho',300)
+    deducao.cadastrarDeducao('Teste',250)
+    deducao.cadastrarPrevidenciaOficial('renda',250)
+    deducao.cadastrarDependentes('Bonifacio','08/08/1998') # 1 dependente = 189,55
+    valor = 989.55
+
+    assert deducao.CalculaDeducoes() == valor
+
     
 # @pytest.mark.TesteExcecao
 # def testDescricaoEmBrancoOutrasDeducoes():
