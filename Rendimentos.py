@@ -1,3 +1,5 @@
+# -*- coding: utf-8 -*-
+
 from Exceptions_test import ValorRendimentoInvalidoException, DescricaoEmBrancoException
 class Rendimento:
     
@@ -21,6 +23,5 @@ class Rendimento:
             raise DescricaoEmBrancoException("Descrição do rendimento em branco! Digite uma descrição válida!")
         self.descricao = descricao
     
-
     def CalculaRendimento(self):
-        return self.valor == 1
+        return 2

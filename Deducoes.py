@@ -1,3 +1,5 @@
+# -*- coding: utf-8 -*-
+
 from Exceptions_test import ValorDeducaoInvalidoException, NomeEmBrancoException
 
 class Deducoes:

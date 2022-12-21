@@ -1,3 +1,5 @@
+# -*- coding: utf-8 -*-
+
 from Rendimentos import Rendimento
 from Deducoes import Deducoes
 rendimento = Rendimento()

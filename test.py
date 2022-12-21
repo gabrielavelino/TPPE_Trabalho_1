@@ -1,3 +1,5 @@
+# -*- coding: utf-8 -*-
+
 import pytest
 from Rendimentos import Rendimento
 from Deducoes import Deducoes
@@ -42,7 +44,7 @@ def testRendimentoDescricaoInvalida(descricao, valor):
 @pytest.mark.TesteFuncional
 def testCalculaRendimento():
     rendimento = Rendimento('rendimento', 1)
-    assert rendimento.CalculaRendimento() == 1
+    assert rendimento.CalculaRendimento() == 2
 
 # DEDUÇOES
 
