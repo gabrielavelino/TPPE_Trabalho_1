@@ -1,5 +1,6 @@
 import pytest
 from Rendimentos import Rendimento
+from Exceptions_test import test_exception
 
 rendimento = [
     ('rendimento', 1),
@@ -23,3 +24,6 @@ def test_rendimento_class_invalid_description(descricao, valor):
 def testCalculaRendimento():
     rendimento = Rendimento('rendimento', 1)
     assert rendimento.CalculaRendimento() == 1
+
+
+
