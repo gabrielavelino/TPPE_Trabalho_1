@@ -6,8 +6,15 @@ rendimento = [
     ('rendimento', 1),
     ('rendiment9', 2.9932),
     ('rend', 34123),
+    ('Teste', 34123),
+]
+
+rendimentoDescricao = [
+    ('rendimento',1),
+]
+
+rendimentoInvalido = [
     (None, None),
-    ('Teste', 34123)
 ]
 
 deducao = [
@@ -21,10 +28,16 @@ def testRendimentoClass(descricao, valor):
     rendimento = Rendimento(descricao, valor)
     assert rendimento.valor == valor
 
-@pytest.mark.parametrize(['descricao', 'valor'], rendimento)
+@pytest.mark.parametrize(['descricao', 'valor'], rendimentoDescricao)
+def testRendimentoDescricaoValida(descricao, valor):
+    rendimento = Rendimento(descricao, valor)
+    assert rendimento.getDescricao() == descricao
+
+@pytest.mark.parametrize(['descricao','valor'], rendimentoInvalido)
 def testRendimentoDescricaoInvalida(descricao, valor):
     rendimento = Rendimento(descricao, valor)
-    assert rendimento.descricao == descricao
+    rendimento.setDescricao('Nao pode ser nulo')
+    assert not rendimento.getDescricao() == descricao
 
 @pytest.mark.TesteFuncional
 def testCalculaRendimento():
