@@ -136,13 +136,6 @@ def testCadastroTotalParametrizado(descricaoAli1,descricaoAli2,descricaoDedu,nom
 
 def testAliquota():
     aliquota = Aliquota(140, 2000)
-    assert aliquota.calcular_aliquota() == 7
-    
-# @pytest.mark.TesteExcecao
-# def testDescricaoEmBrancoOutrasDeducoes():
-#         deducao = Deducoes()
-#         with pytest.raises(DescricaoEmBrancoException):
-#             deducao.setDeducao("")
-
+    assert aliquota.calcular_aliquota() == 7.00
 
 
