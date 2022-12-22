@@ -134,8 +134,30 @@ def testCadastroTotalParametrizado(descricaoAli1,descricaoAli2,descricaoDedu,nom
 
 # Aliquota
 
-def testAliquota():
-    aliquota = Aliquota(140, 2000)
-    assert aliquota.calcular_aliquota() == 7.00
+primeiro_caso = [(225,3000,7.5)]
+segundo_caso = [(187.5,2500,7.5), (750,5000,15.0)]
+terceiro_caso = [(140.7,1876,7.5), (635.25,4235,15.0), (1925,7000,27.5)]
+
+@pytest.mark.parametrize(['imposto', 'valor_base', 'aliquota_esperada'], primeiro_caso)
+def testAliquota(imposto, valor_base, aliquota_esperada):
+    aliquota = Aliquota(imposto, valor_base)
+    assert aliquota.calcular_aliquota() == aliquota_esperada
+
+
+@pytest.mark.parametrize(['imposto', 'valor_base', 'aliquota_esperada'], segundo_caso)
+def testAliquota(imposto, valor_base, aliquota_esperada):
+    aliquota = Aliquota(imposto, valor_base)
+    assert aliquota.calcular_aliquota() == aliquota_esperada
+
+
+@pytest.mark.parametrize(['imposto', 'valor_base', 'aliquota_esperada'], terceiro_caso)
+def testAliquota(imposto, valor_base, aliquota_esperada):
+    aliquota = Aliquota(imposto, valor_base)
+    assert aliquota.calcular_aliquota() == aliquota_esperada
+
+
+
+
+
 
 
