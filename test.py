@@ -155,6 +155,32 @@ def testAliquota(imposto, valor_base, aliquota_esperada):
     aliquota = Aliquota(imposto, valor_base)
     assert aliquota.calcular_aliquota() == aliquota_esperada
 
+# EXCESSOES
+
+def testExcessaoDeducaoNome():
+    deducao = Deducoes()
+    with pytest.raises(NomeEmBrancoException):
+        deducao.cadastrarPensaoAlimenticia('',300)
+        
+def testExcessaoDeducaoValor():
+    deducao = Deducoes()
+    with pytest.raises(ValorDeducaoInvalidoException):
+        deducao.cadastrarPensaoAlimenticia('filho',0)
+
+def testExcessaoDependentesNome():
+    deducao = Deducoes()
+    with pytest.raises(NomeEmBrancoException):
+        deducao.cadastrarDependentes('', '08/08/1998')
+
+def rendimentoExcessaoNome():
+    rendimento = Rendimento()
+    with pytest.raises(DescricaoEmBrancoException):
+        rendimento.setDescricao('')
+
+def rendimentoExcessaoValor():
+    rendimento = Rendimento()
+    with pytest.raises(ValorRendimentoInvalidoException):
+        rendimento.setValor(0)
 
 
 

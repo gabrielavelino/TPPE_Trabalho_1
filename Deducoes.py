@@ -9,6 +9,7 @@ class Deducoes:
         self.pensaoAlimenticia = []
         self.dependentes = []
         self.totalValorDeducao = 0.0
+        #self.deducaoDict = {}
     
     def cadastrarDeducao(self,deducao,valorDeducao):
         if deducao == '' or None:
@@ -19,6 +20,9 @@ class Deducoes:
         deducaoDict = {"descricao": deducao, "valor": valorDeducao}
         self.deducoes.append(deducaoDict)
         self.totalValorDeducao += valorDeducao
+
+        print(self.deducoes)
+        print(self.totalValorDeducao)
     
     def cadastrarPrevidenciaOficial(self,descPrevidencia,valorPrevidencia):
         if descPrevidencia == '' or None:
