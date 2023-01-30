@@ -13,4 +13,10 @@ Esse trabalho 1 tem como objetivo implementar um simulador de cálculo IRPF simi
 
 ## Como rodar
 
-Escrever...
+Para rodar o programa, digite: 
+
+```python ou python3 main.py ```
+
+Para rodar os testes, digite:
+
+```pytest test.py```
