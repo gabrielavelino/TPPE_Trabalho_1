@@ -21,8 +21,8 @@ class Deducoes:
         self.deducoes.append(deducaoDict)
         self.totalValorDeducao += valorDeducao
 
-        print(self.deducoes)
-        print(self.totalValorDeducao)
+        # print(self.deducoes)
+        # print(self.totalValorDeducao)
     
     def cadastrarPrevidenciaOficial(self,descPrevidencia,valorPrevidencia):
         if descPrevidencia == '' or None:
