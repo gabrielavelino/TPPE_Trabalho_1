@@ -109,7 +109,7 @@ def main():
     resultado_final = faixa.calcular_imposto()
 
     base_total = resultado_final['faixa_1']['valor_base'] + resultado_final['faixa_2']['valor_base'] + resultado_final['faixa_3']['valor_base'] + resultado_final['faixa_4']['valor_base'] + resultado_final['faixa_5']['valor_base']
-    imposto_total = resultado_final['faixa_5']['valor_imposto']
+    imposto_total = resultado_final['faixa_5']['valor_imposto'] + resultado_final['faixa_4']['valor_imposto'] + resultado_final['faixa_3']['valor_imposto'] + resultado_final['faixa_2']['valor_imposto'] + resultado_final['faixa_1']['valor_imposto']
 
     print("1ª Faixa")
     print(f"Base de cálculo: {resultado_final['faixa_1']['valor_base']}  |   Valor do imposto: {resultado_final['faixa_1']['valor_imposto']}")
@@ -121,7 +121,7 @@ def main():
     print(f"Base de cálculo: {resultado_final['faixa_4']['valor_base']}  |   Valor do imposto: {resultado_final['faixa_4']['valor_imposto']}")
     print("5ª Faixa")
     print(f"Base de cálculo: {resultado_final['faixa_5']['valor_base']}  |   Valor do imposto: {resultado_final['faixa_5']['valor_imposto']}\n")
-    print(f"Base de cálculo total: {base_total}  |   Valor total do imposto: {resultado_final['faixa_5']['valor_imposto']}\n")
+    print(f"Base de cálculo total: {base_total}  |   Valor total do imposto: {imposto_total}\n")
 
     aliquota = Aliquota(imposto_total, base_total)
     valor_final_aliquota = aliquota.calcular_aliquota()
