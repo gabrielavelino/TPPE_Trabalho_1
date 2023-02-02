@@ -1,21 +1,24 @@
 import math
 from tabela import tabela_faixa
 
+
 class Faixa:
 
     def __init__(self, rendimentos):
         self.rendimentos = rendimentos
-        self.tabela = tabela_faixa
+        self.calculadora = CalculadoraImposto(self.rendimentos)
 
-    def valor_imposto(self, aliquota, deducao):
-        return round(((self.rendimentos / 100) * aliquota - deducao), 2)
+    def gerar_faixa(self):
+        faixa = self.calculadora.computar()
+        return faixa
 
-    def valor_base(self, faixa):
-        return self.rendimentos - self.tabela[faixa]['max']
 
-    def calcular_imposto(self):
+class CalculadoraImposto:
 
-        calculo_faixas = {
+    def __init__(self, rendimentos):
+        self._rendimentos = rendimentos
+        self._tabela = tabela_faixa
+        self._calculo_faixas = {
             'faixa_1': { 'valor_imposto': 0, 'valor_base': 0 },
             'faixa_2': { 'valor_imposto': 0, 'valor_base': 0 },
             'faixa_3': { 'valor_imposto': 0, 'valor_base': 0 },
@@ -24,64 +27,76 @@ class Faixa:
             'total': { 'valor_imposto': 0, 'valor_base': 0 }
         }
 
-        if self.rendimentos <= 1903.98:
+    def valor_imposto(self,aliquota, deducao):
+        return round(((self._rendimentos / 100) * aliquota - deducao), 2)
 
-            return calculo_faixas
+    def valor_base(self, faixa):
+        return self._rendimentos - self._tabela[faixa]['max']
 
-        if self.rendimentos > 1903.98 and self.rendimentos <= 2826.65:
+    def incide_sobre_faixa_1(self):
+        return self._calculo_faixas
 
-            calculo_faixas['faixa_1']['valor_imposto'] = 0
-            calculo_faixas['faixa_1']['valor_base'] = 1903.98
+    def incide_sobre_faixa_2(self):
 
-            calculo_faixas['faixa_2']['valor_imposto'] = self.valor_imposto(7.5,142.8)
-            calculo_faixas['faixa_2']['valor_base'] = self.valor_base('faixa_1')
+        self._calculo_faixas['faixa_1']['valor_imposto'] = 0
+        self._calculo_faixas['faixa_1']['valor_base'] = 1903.98
+        self._calculo_faixas['faixa_2']['valor_imposto'] = self.valor_imposto(7.5, 142.8)
+        self._calculo_faixas['faixa_2']['valor_base'] = self.valor_base('faixa_1')
 
-            return calculo_faixas
+        return self.calculo_faixas
 
-        if self.rendimentos > 2826.65 and self.rendimentos <= 3751.05:
+    def incide_sobre_faixa_3(self):
 
-            calculo_faixas['faixa_1']['valor_imposto'] = 0
-            calculo_faixas['faixa_1']['valor_base'] = 1903.98
+        self._calculo_faixas['faixa_1']['valor_imposto'] = 0
+        self._calculo_faixas['faixa_1']['valor_base'] = 1903.98
+        self._calculo_faixas['faixa_2']['valor_imposto'] = 69.20
+        self._calculo_faixas['faixa_2']['valor_base'] = 922.67
+        self._calculo_faixas['faixa_3']['valor_imposto'] = self.valor_imposto(15, 354.8)
+        self._calculo_faixas['faixa_3']['valor_base'] = self.valor_base('faixa_2')
 
-            calculo_faixas['faixa_2']['valor_imposto'] = 69.20
-            calculo_faixas['faixa_2']['valor_base'] = 922.67
+        return self._calculo_faixas
 
-            calculo_faixas['faixa_3']['valor_imposto'] = self.valor_imposto(15,354.8)
-            calculo_faixas['faixa_3']['valor_base'] = self.valor_base('faixa_2')
+    def incide_sobre_faixa_4(self):
 
-            return calculo_faixas
+        self._calculo_faixas['faixa_1']['valor_imposto'] = 0
+        self._calculo_faixas['faixa_1']['valor_base'] = 1903.98
+        self._calculo_faixas['faixa_2']['valor_imposto'] = 69.20
+        self._calculo_faixas['faixa_2']['valor_base'] = 922.67
+        self._calculo_faixas['faixa_3']['valor_imposto'] = 138.66
+        self._calculo_faixas['faixa_3']['valor_base'] = 924.40
+        self._calculo_faixas['faixa_4']['valor_imposto'] = self.valor_imposto(22.5, 636.13)
+        self._calculo_faixas['faixa_4']['valor_base'] = self.valor_base('faixa_3')
 
-        if self.rendimentos > 3751.05 and self.rendimentos <= 4664.68:
+        return self._calculo_faixas
 
-            calculo_faixas['faixa_1']['valor_imposto'] = 0
-            calculo_faixas['faixa_1']['valor_base'] = 1903.98
+    def incide_sobre_faixa_5(self):
 
-            calculo_faixas['faixa_2']['valor_imposto'] = 69.20
-            calculo_faixas['faixa_2']['valor_base'] = 922.67
+        self._calculo_faixas['faixa_1']['valor_imposto'] = 0
+        self._calculo_faixas['faixa_1']['valor_base'] = 1903.98
+        self._calculo_faixas['faixa_2']['valor_imposto'] = 69.20
+        self._calculo_faixas['faixa_2']['valor_base'] = 922.67
+        self._calculo_faixas['faixa_3']['valor_imposto'] = 138.66
+        self._calculo_faixas['faixa_3']['valor_base'] = 924.40
+        self._calculo_faixas['faixa_4']['valor_imposto'] = 205.56
+        self._calculo_faixas['faixa_4']['valor_base'] = 913.63
+        self._calculo_faixas['faixa_5']['valor_imposto'] = self.valor_imposto(27.5, 869.36)
+        self._calculo_faixas['faixa_5']['valor_base'] = self.valor_base('faixa_4')
 
-            calculo_faixas['faixa_3']['valor_imposto'] = 138.66
-            calculo_faixas['faixa_3']['valor_base'] = 924.40
+        return self._calculo_faixas
 
-            calculo_faixas['faixa_4']['valor_imposto'] = self.valor_imposto(22.5,636.13)
-            calculo_faixas['faixa_4']['valor_base'] = self.valor_base('faixa_3')
+    def computar(self):
 
-            return calculo_faixas
+        if self._rendimentos <= 1903.98:
+            return self.incide_sobre_faixa_1()
 
-        if self.rendimentos > 4664.68:
+        elif self._rendimentos > 1903.98 and self._rendimentos <= 2826.65:
+            return self.incide_sobre_faixa_2()
 
-            calculo_faixas['faixa_1']['valor_imposto'] = 0
-            calculo_faixas['faixa_1']['valor_base'] = 1903.98
+        elif self._rendimentos > 2826.65 and self._rendimentos <= 3751.05:
+            return self.incide_sobre_faixa_3()
+    
+        elif self._rendimentos > 3751.05 and self._rendimentos <= 4664.68:
+            return self.incide_sobre_faixa_4()
 
-            calculo_faixas['faixa_2']['valor_imposto'] = 69.20
-            calculo_faixas['faixa_2']['valor_base'] = 922.67
-
-            calculo_faixas['faixa_3']['valor_imposto'] = 138.66
-            calculo_faixas['faixa_3']['valor_base'] = 924.40
-
-            calculo_faixas['faixa_4']['valor_imposto'] = 205.56
-            calculo_faixas['faixa_4']['valor_base'] = 913.63
-
-            calculo_faixas['faixa_5']['valor_imposto'] = self.valor_imposto(27.5,869.36)
-            calculo_faixas['faixa_5']['valor_base'] = self.valor_base('faixa_4')
-
-            return calculo_faixas
+        elif self._rendimentos > 4664.68:
+            return self.incide_sobre_faixa_5()
