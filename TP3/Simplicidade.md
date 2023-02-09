@@ -13,7 +13,7 @@ A simplificação de um código ajuda na eliminação de maus-cheiros, visto que
 
 ## Exemplo de refatoraçao utilizando Simplicidade
 
-Um exempli de operação de refatoração que pode ser aplicada para favorecer a simplicidade de um código é reduzir seu tamanho original, descartando linhas desnecessárias. Favorecendo a simplicidade do código, pois ela permite que o código fique mais legível e mais fácil de ser entendido, além de da facilidade em trabalhar com suporte. No exemplo abaixo, foi utilizado o método de refatoração de redução de tamanho de código, que consiste em remover linhas de código que não são necessárias para o funcionamento do programa. Um exemplo foi um dos códigos refatorados no TP2, 
+Um exemplo de operação de refatoração que pode ser aplicada para favorecer a simplicidade de um código é reduzir seu tamanho original, descartando linhas desnecessárias. Favorecendo a simplicidade do código, pois ela permite que o código fique mais legível e mais fácil de ser entendido, além de da facilidade em trabalhar com suporte. No exemplo abaixo, foi utilizado o método de refatoração de redução de tamanho de código, que consiste em remover linhas de código que não são necessárias para o funcionamento do programa. Um exemplo foi um dos códigos refatorados no TP2, 
 
 - Exemplo de código original em Python:
 ```python

@@ -59,34 +59,27 @@ Código antes da refatoração:
 
 ```python
 from Exceptions_test import ValorRendimentoInvalidoException, DescricaoEmBrancoException
-
 class Rendimento:
-    def __init__(self, descricao: str = '', valor: float = 0.0):
+    
+    def __init__(self,descricao =  '',valor = 0):
         self.descricao = descricao
         self.valor = valor
-    
-    def __repr__(self):
-        return f"{self.__class__.__name__}(descricao={self.descricao!r}, valor={self.valor!r})"
-    
-    @property
-    def valor(self):
-        return self._valor
-    
-    @valor.setter
-    def valor(self, value):
-        if not value or value < 0:
+        pass
+
+    def getValor(self):
+        return self.valor
+    def setValor(self,valor):
+        if valor == 0 or valor == None or valor < 0:
             raise ValorRendimentoInvalidoException("Valor do rendimento inválido! Digite um valor válido!")
-        self._valor = value
+        self.valor = valor
     
-    @property
-    def descricao(self):
-        return self._descricao
-    
-    @descricao.setter
-    def descricao(self, value):
-        if not value:
+    def getDescricao(self):
+        return self.descricao
+
+    def setDescricao(self,descricao):
+        if descricao == '' or descricao == None:
             raise DescricaoEmBrancoException("Descrição do rendimento em branco! Digite uma descrição válida!")
-        self._descricao = value
+        self.descricao = descricao
     
     def CalculaRendimento(self):
         return self.valor

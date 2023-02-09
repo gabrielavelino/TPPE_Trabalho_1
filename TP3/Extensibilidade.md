@@ -21,7 +21,7 @@ Existem algumas formas de tornar um projeto com mais extensibilidade:
 
 Por exemplo, nesse sentido, evita-se a repetição do código já que é muito mais inteligente reescrever uma parte do código para que possa se adaptar a nova função do que criar uma nova parte que pouco difere da primeira. Além disso, ajuda também quando se prioriza soluções flexíveis a soluções rígidas e específicas, sem mencionar nos benefícios que os padrões do projeto e a modulizarização trazem ao código.
 
-## Exemplo de refatoração utilizando código mais elegante
+## Exemplo de refatoração
 
 No caso abaixo, o cálculo da faixa 4 é meio obscuro. Não se sabe exatamente o que aqueles valores significam, e para um desenvolvedor que não tenha participado dessa parte do código, pode ficar bem complicado de se entender. Para um projeto que busca escala e extensibilidade, não é uma opção muito recomendada soluções desse tipo.  
 
